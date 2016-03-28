@@ -1,0 +1,6 @@
+# Applyrics
+
+
+## License
+
+[MIT](./LICENSE).
