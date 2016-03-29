@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "This is a test of localization in interface builder"; ObjectID = "C8n-M8-Sun"; */
+"C8n-M8-Sun.text" = "This is a test of localization in interface builder";
+
+/* Class = "UIButton"; normalTitle = "Press me"; ObjectID = "ntk-4x-Uds"; */
+"ntk-4x-Uds.normalTitle" = "Press me";
