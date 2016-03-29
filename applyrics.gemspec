@@ -13,9 +13,14 @@ Gem::Specification.new do |s|
   s.email         = 'frederik.wallner@gmail.com'
   s.files         = Dir["lib/**/*"] + %w(bin/gym README.md LICENSE)
   s.executables   = ["applyrics"]
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.homepage      = 'https://applyrics.io'
   s.license       = 'MIT'
 
   s.add_dependency 'commander', '~> 4.4'
   s.add_dependency 'colored', '~> 1.2'
+
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'coveralls'
 end
