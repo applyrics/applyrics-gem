@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'commander', '~> 4.4'
   s.add_dependency 'colored', '~> 1.2'
 
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'coveralls'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'coveralls'
 end
