@@ -28,9 +28,11 @@ module Applyrics
       command :rebuild do |c|
         c.syntax = "applyrics rebuild"
         c.description = "Rebuilds language files for your project"
+        c.option '--project STRING', String, 'Path to iOS or Android project'
         c.action do |args, options|
+          options.default :project => './'
           puts "rebuilding..."
-          Applyrics::GenStrings.run("./", "./")
+          Applyrics::GenStrings.run("#{options.project}", "#{options.project}")
         end
       end
 

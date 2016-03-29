@@ -1,4 +1,5 @@
 require 'pty'
+require 'colored'
 
 module Applyrics
   class Command
@@ -17,6 +18,9 @@ module Applyrics
       end
 
       def execute(command)
+        output = []
+        command = command.join(" ") if command.kind_of?(Array)
+        
         begin
           PTY.spawn(command) do |stdin, stdout, pid|
             stdin.each do |l|
@@ -29,11 +33,15 @@ module Applyrics
               #prefix.each do |element|
               #  line = element[:prefix] + line if element[:block] && element[:block].call(line)
               #end
+
+              puts line
             end
             Process.wait(pid)
           end
         rescue Errno::EIO
         rescue => ex
+          puts "Error".red
+          puts ex
         end
 
         # Exit status for build command, should be 0 if build succeeded
