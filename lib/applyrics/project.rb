@@ -1,14 +1,12 @@
 require 'i18n_data'
+require 'applyrics/project_ios'
 module Applyrics
   class Project
     def initialize(platform, path="")
       @platform = platform
 
-      if path.to_s.length == 0
-        path = Dir["./*.xcworkspace"].first
-      end
-      if path.to_s.length == 0
-        path = Dir["./*.xcodeproj"].first
+      if @platform == :ios
+        @project = Applyrics::Project_iOS.new(path)
       end
 
       puts path
@@ -17,33 +15,11 @@ module Applyrics
 
     # Return a list of detected languages in the project
     def detected_languages
-      if @platform == :ios
-        folder = self.platform_project_settings("SOURCE_ROOT")
-        base_language = I18nData.language_code(self.platform_project_settings("DEVELOPMENT_LANGUAGE")).downcase
-        lang_folders = Dir.glob(File.join(folder, "**", "*.lproj"))
-        @langs = {}
-        lang_folders.each do |lang_folder|
-          lang = /([A-Za-z\-]*?)\.lproj/.match(lang_folder)[1]
-          lang = (lang == "Base" ? base_language : lang)
-          @langs[lang] = lang_folder
-        end
-
-      elsif @platform == :android
-
-      end
+      @project.detected_languages()
     end
 
     def platform_project_settings(name)
-      if @platform == :ios
-        if @platform_settings.nil?
-          cmd = ["set -o pipefail && xcrun xcodebuild -showBuildSettings"]
-          cmd << "-project '#{@path}'"
-          @platform_settings = Command.execute(cmd, false)
-        end
-
-        result = @platform_settings.split("\n").find { |c| c.split(" = ").first.strip == name }
-        return result.split(" = ").last
-      end
+      @project.platform_project_settings(name)
     end
   end
 end
