@@ -11,7 +11,6 @@ module Applyrics
         path = Dir["./*.xcodeproj"].first
       end
 
-      puts "Path:"
       puts path
       @path = path
     end
@@ -45,10 +44,6 @@ module Applyrics
         result = @platform_settings.split("\n").find { |c| c.split(" = ").first.strip == name }
         return result.split(" = ").last
       end
-    end
-
-    def to_s
-      "Project at #{@path}"
     end
   end
 end

@@ -19,7 +19,6 @@ module Applyrics
       end
 
       project = Applyrics::Project.new(platform)
-      project.detected_languages()
     end
 
     def is_ios?
