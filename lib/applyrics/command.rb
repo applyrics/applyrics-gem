@@ -17,10 +17,10 @@ module Applyrics
         return nil
       end
 
-      def execute(command)
+      def execute(command, show_output=true)
         output = []
         command = command.join(" ") if command.kind_of?(Array)
-        
+
         begin
           PTY.spawn(command) do |stdin, stdout, pid|
             stdin.each do |l|
@@ -33,8 +33,7 @@ module Applyrics
               #prefix.each do |element|
               #  line = element[:prefix] + line if element[:block] && element[:block].call(line)
               #end
-
-              puts line
+              puts line unless !show_output
             end
             Process.wait(pid)
           end
