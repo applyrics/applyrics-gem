@@ -6,3 +6,13 @@ rvm:
 - 2.0.0
 - 1.9.3
 - rbx-2
+deploy:
+  provider: rubygems
+  api_key:
+    secure: b0L7dIXuIs1dbb2vDNqMTL8Yob8kEREkkTgEJoHcpnvnx9rRQXMnBvDWf31M6/jmzx5lvp/LhlJUNyNtPjMB9h2YI4zWAggZ8Ao3gaLkMyEFArDrpAI4uayWp0cgVahJR5g8Ti57jImPbpAdS1IO9ShFo9GVoF/kqXrBFIdnM5pHbGwiMAA0b/+W8U68b182yEm2i5/C1E+fd1lVFAgGp5vr8rSONnUhdrRQ7RvsATTpRE5RWNLO4z0y8i+X9Nl3oFyRVyKb70f/YKYV17f1btf9t1QRoww3RGInOftEwxQqw5WtqYwAdjeXgaS5P8+LF57P2kjqTG9ET1hAhAkrgYNNOUG5/0C2F46G5aYBmJ4sAlzwO4molZ3mCcpiMBJ2u7yTVXbe7LJEomkYjqXtDVZ0AqjMVadQqXB5QqN8oLyeMmjgLljgmiNsjuhCDcw41bkTOGXcRo/5uxifWk9r+j0Le55BWFaSHp0Dnvj7UuAW6mJWInPLIj6eRspGOX+ejUviapNeElbMiAQqLmJ4VRSHZOXBtPhPFULiCNgadiyET5kir2FEQZXXwNbwt89aHTujY2GspTBuBu8cmFnsWrg/pE0Q5P2pIffX1YrKeNTCeIsw64VsHPfq40PTiwgsNdf9z9T0s7CpN3hz7AYpTOhiBtg5cOPKAu063F1HCuc=
+  gem: applyrics
+  gemspec: applyrics.gemspec
+  on:
+    tags: true
+    repo: applyrics/applyrics-gem
+    branch: master
