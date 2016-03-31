@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description   = Applyrics::DESCRIPTION
   s.authors       = ["Frederik Wallner"]
   s.email         = 'frederik.wallner@gmail.com'
-  s.files         = Dir["lib/**/*"] + %w(bin/gym README.md LICENSE)
+  s.files         = Dir["lib/**/*"] + %w(bin/applyrics README.md LICENSE)
   s.executables   = ["applyrics"]
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.homepage      = 'https://applyrics.io'
