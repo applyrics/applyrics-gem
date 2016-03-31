@@ -1,4 +1,5 @@
 require 'commander'
+require 'applyrics/setup'
 
 module Applyrics
   class CLI
@@ -18,7 +19,7 @@ module Applyrics
         c.syntax = "applyrics init"
         c.description = "Sets up the project"
         c.action do |args, options|
-          puts "wazzapp!"
+          Applyrics::Setup.new.run()
           if agree("Rebuild language files?")
             puts "will rebuild..."
           end

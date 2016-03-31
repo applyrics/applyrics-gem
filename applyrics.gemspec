@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'commander', '~> 4.4'
   s.add_dependency 'colored', '~> 1.2'
+  s.add_dependency 'i18n_data', '~> 0.7.0'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
