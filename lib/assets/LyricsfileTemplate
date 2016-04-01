@@ -1,2 +1,6 @@
+# Applyrics.io
 account:[[ACCOUNT_ID]]
-project_key:[[PROJECT_KEY]]
+project:[[PROJECT_KEY]]
+
+# Name of local language file
+filename:[[FILENAME]]
