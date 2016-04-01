@@ -1,4 +1,5 @@
 require 'applyrics/project'
+require 'applyrics/lyricsfile'
 module Applyrics
   class Setup
 
@@ -17,7 +18,7 @@ module Applyrics
         puts "Didn't find any project!"
         return
       end
-
+      Applyrics::Lyricsfile.generate()
       project = Applyrics::Project.new(platform)
     end
 
