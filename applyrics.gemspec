@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files         = Dir["lib/**/*"] + %w(bin/applyrics README.md LICENSE)
   s.executables   = ["applyrics"]
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
-  s.homepage      = 'https://applyrics.io'
+  s.homepage      = 'https://github.com/applyrics/applyrics-gem'
   s.license       = 'MIT'
 
   s.add_dependency 'commander', '~> 4.4'
