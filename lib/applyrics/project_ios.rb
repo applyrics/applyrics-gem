@@ -1,4 +1,5 @@
 require 'i18n_data'
+require 'applyrics/tools/genstrings'
 module Applyrics
   class Project_iOS
     def initialize(path)
@@ -34,6 +35,11 @@ module Applyrics
 
       result = @platform_settings.split("\n").find { |c| c.split(" = ").first.strip == name }
       return result.split(" = ").last
+    end
+
+    def rebuild_files
+      folder = self.platform_project_settings("SOURCE_ROOT")
+      Applyrics::GenStrings.run("#{folder}", "#{folder}")
     end
   end
 end
