@@ -1,3 +1,4 @@
+require 'commander'
 require 'applyrics/project'
 require 'applyrics/lyricsfile'
 module Applyrics
