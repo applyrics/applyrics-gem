@@ -18,8 +18,20 @@ module Applyrics
         puts "Didn't find any project!"
         return
       end
-      Applyrics::Lyricsfile.generate()
-      project = Applyrics::Project.new(platform)
+
+      config = {}
+      if agree("Connect to Applyrics.io?")
+        ask("Username:")
+        ask("Password:  ") { |q| q.echo = "*" }
+        choice = choose("Project?", :first, :second, :third)
+        config[:account_id] = "awesome-account"
+        config[:project_key] = choice.to_s
+      elsif agree("Use local files?")
+        config[:filename] = "lyrics.json"
+      end
+
+      Applyrics::Lyricsfile.generate(config)
+      Applyrics::Project.new(platform)
     end
 
     def is_ios?
