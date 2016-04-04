@@ -63,7 +63,8 @@ module Applyrics
         c.action do |args, options|
           options.default :project => './'
           puts "rebuilding..."
-          Applyrics::GenStrings.run("#{options.project}", "#{options.project}")
+          project = Applyrics::Project.new()
+          project.rebuild_files()
         end
       end
 
