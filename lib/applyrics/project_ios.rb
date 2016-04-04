@@ -1,5 +1,8 @@
+# encoding: utf-8
 require 'i18n_data'
+require 'multi_json'
 require 'applyrics/tools/genstrings'
+require 'applyrics/stringsfile'
 module Applyrics
   class Project_iOS
     def initialize(path)
@@ -46,9 +49,18 @@ module Applyrics
         Dir.mkdir(tmp_folder, 0700)
       end
 
-      puts tmp_folder
+      GenStrings.run("#{folder}", tmp_folder)
 
-      Applyrics::GenStrings.run("#{folder}", tmp_folder)
+      out = {}
+      Dir[File.join(tmp_folder, "*.strings")].each do |file|
+        strings = StringsFile.new(file)
+        out[File.basename(file)] = strings.hash
+      end
+
+      puts MultiJson.dump(out, :pretty => true)
+
+      File.open(File.join(tmp_folder, "strings.json"), 'w') { |file| file.write(MultiJson.dump(out, :pretty => true)) }
+
     end
   end
 end
