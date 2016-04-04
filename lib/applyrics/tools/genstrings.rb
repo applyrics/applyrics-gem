@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'applyrics/command'
 module Applyrics
   class GenStrings
