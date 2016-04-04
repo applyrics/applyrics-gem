@@ -25,7 +25,7 @@ This software should be considered ***pre-alpha*** and may thus be incomplete an
 
 Install using ruby gems:
 
-  sudo gem install applyrics --verbose
+    sudo gem install applyrics --verbose
 
 
 ## Usage
@@ -33,13 +33,13 @@ Install using ruby gems:
 Initialize
 (iOS: :x: Android: :x:)
 
-  applyrics init
+    applyrics init
 
 
 Rebuild language files
 (iOS: :x: Android: :x:)
 
-  applyrics rebuild
+    applyrics rebuild
 
 
 Apply a json language file
@@ -50,7 +50,7 @@ Apply a json language file
 Sync languages
 (iOS: :x: Android: :x:)
 
-  applyrics sync
+    applyrics sync
 
 
 ## License
