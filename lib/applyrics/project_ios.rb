@@ -2,6 +2,7 @@
 require 'i18n_data'
 require 'multi_json'
 require 'applyrics/tools/genstrings'
+require 'applyrics/tools/ibtool'
 require 'applyrics/stringsfile'
 module Applyrics
   class Project_iOS
@@ -50,16 +51,17 @@ module Applyrics
       end
 
       GenStrings.run("#{folder}", tmp_folder)
+      IBTool.run("#{folder}", tmp_folder)
 
       out = {}
       Dir[File.join(tmp_folder, "*.strings")].each do |file|
+        puts file
         strings = StringsFile.new(file)
         out[File.basename(file)] = strings.hash
       end
 
-      puts MultiJson.dump(out, :pretty => true)
+      File.open(File.join("./", "strings.json"), 'w') { |file| file.write(MultiJson.dump(out, :pretty => true)) }
 
-      File.open(File.join(tmp_folder, "strings.json"), 'w') { |file| file.write(MultiJson.dump(out, :pretty => true)) }
 
     end
   end
