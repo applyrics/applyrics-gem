@@ -31,7 +31,23 @@ module Applyrics
             config[:filename] = "lyrics.json"
           end
 
-          project = Applyrics::Setup.new.run(config)
+          platform = nil
+          if Applyrics::Project.is_ios?
+            puts "Found iOS project..."
+            platform = :ios
+          elsif Applyrics::Project.is_android?
+            puts "Found Android project..."
+            platform = :android
+          elsif Applyrics::Project.is_unity?
+            puts "Found Unity project..."
+            platform = :unity
+          else
+            puts "Didn't find any project!"
+            return
+          end
+
+          Applyrics::Lyricsfile.generate(config)
+          project = Applyrics::Project.new(platform)
 
           if agree("Rebuild language files?")
             puts "will rebuild..."

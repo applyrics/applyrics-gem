@@ -11,6 +11,7 @@ module Applyrics
       end
       @path = path
       @platform_settings = nil
+      @langs = {}
     end
 
     # Return a list of detected languages in the project
@@ -18,12 +19,12 @@ module Applyrics
       folder = self.platform_project_settings("SOURCE_ROOT")
       base_language = I18nData.language_code(self.platform_project_settings("DEVELOPMENT_LANGUAGE")).downcase
       lang_folders = Dir.glob(File.join(folder, "**", "*.lproj"))
-      @langs = {}
       lang_folders.each do |lang_folder|
         lang = /([A-Za-z\-]*?)\.lproj/.match(lang_folder)[1]
         lang = (lang == "Base" ? base_language : lang)
         @langs[lang] = lang_folder
       end
+      return @langs
     end
 
     def platform_project_settings(name)
@@ -39,7 +40,15 @@ module Applyrics
 
     def rebuild_files
       folder = self.platform_project_settings("SOURCE_ROOT")
-      Applyrics::GenStrings.run("#{folder}", "#{folder}")
+      tmp_folder = "./.tmp/"
+
+      if !Dir.exist?(tmp_folder)
+        Dir.mkdir(tmp_folder, 0700)
+      end
+
+      puts tmp_folder
+
+      Applyrics::GenStrings.run("#{folder}", tmp_folder)
     end
   end
 end
