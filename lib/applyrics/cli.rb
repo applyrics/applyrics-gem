@@ -19,40 +19,7 @@ module Applyrics
         c.syntax = "applyrics init"
         c.description = "Sets up the project"
         c.action do |args, options|
-
-          config = {}
-          if agree("Connect to Applyrics.io?")
-            ask("Username:")
-            ask("Password:  ") { |q| q.echo = "*" }
-            choice = choose("Project?", :first, :second, :third)
-            config[:account_id] = "awesome-account"
-            config[:project_key] = choice.to_s
-          elsif agree("Use local files?")
-            config[:filename] = "lyrics.json"
-          end
-
-          platform = nil
-          if Applyrics::Project.is_ios?
-            puts "Found iOS project..."
-            platform = :ios
-          elsif Applyrics::Project.is_android?
-            puts "Found Android project..."
-            platform = :android
-          elsif Applyrics::Project.is_unity?
-            puts "Found Unity project..."
-            platform = :unity
-          else
-            puts "Didn't find any project!"
-            return
-          end
-
-          Applyrics::Lyricsfile.generate(config)
-          project = Applyrics::Project.new(platform)
-
-          if agree("Rebuild language files?")
-            puts "will rebuild..."
-            project.rebuild_files()
-          end
+          puts "Not implemented yet... Sorry!"
         end
       end
 
