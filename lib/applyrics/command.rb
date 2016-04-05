@@ -49,7 +49,7 @@ module Applyrics
         status = $?.exitstatus
         if status != 0
           o = output.join("\n")
-          puts o
+          puts "Status #{status} - #{o}"
         end
 
         return output.join("\n")
