@@ -6,7 +6,6 @@ require 'applyrics/info'
 Gem::Specification.new do |s|
   s.name          = 'applyrics'
   s.version       = Applyrics::VERSION
-  s.date          = '2016-03-28'
   s.summary       = Applyrics::DESCRIPTION
   s.description   = Applyrics::DESCRIPTION
   s.authors       = ["Frederik Wallner"]
