@@ -47,15 +47,33 @@ module Applyrics
       @project.detected_languages()
     end
 
+    def language_files
+      @project.language_files()
+    end
+
+    # @return [String] The language which are the default language in the project
+    def default_language
+      @project.default_language
+    end
+
     # @param [String] the name of the setting to read.
     # @return [String, nil] the value of the setting or nil if not found.
     def platform_project_settings(name)
       @project.platform_project_settings(name)
     end
 
+    # @return [Object, nil] the strings files found in the project
+    def string_files
+      @project.string_files()
+    end
+
     # Rebuild the language files.
     def rebuild_files
       @project.rebuild_files()
+    end
+
+    def platform
+      @platform
     end
   end
 end
