@@ -38,8 +38,7 @@ module Applyrics
       command :apply do |c|
         c.syntax = "applyrics apply"
         c.description = "Applies language from a .json file"
-        c.option '--project STRING', String, 'Path to iOS or Android project'
-        c.option '--data STRING', String, 'Path to .json file (Default: lyrics.json)'
+        c.option '--data STRING', String, 'Path to .json file (Default: strings.json)'
         c.action do |args, options|
           options.default :project => './', :data => './lyrics.json'
           puts "Not implemented yet... Sorry!"
