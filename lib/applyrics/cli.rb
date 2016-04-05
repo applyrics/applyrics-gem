@@ -1,6 +1,7 @@
 require 'commander'
 require 'colored'
 require 'applyrics/setup'
+require 'applyrics/languagefile'
 
 module Applyrics
   class CLI
@@ -15,6 +16,7 @@ module Applyrics
       program :version, Applyrics::VERSION
       program :description, Applyrics::DESCRIPTION
       program :help_formatter, :compact
+      global_option '--[no-]rebuild', TrueClass, 'Rebuild language files from source'
 
       command :init do |c|
         c.syntax = "applyrics init"
@@ -48,15 +50,30 @@ module Applyrics
         end
       end
 
-      command :rebuild do |c|
-        c.syntax = "applyrics rebuild"
-        c.description = "Rebuilds language files for your project"
-        c.option '--project STRING', String, 'Path to iOS or Android project'
+      command :extract do |c|
+        c.syntax = "applyrics extract"
+        c.description = "Pull strings from the project into a strings.json file"
         c.action do |args, options|
-          options.default :project => './'
-          puts "rebuilding..."
+          
           project = Applyrics::Project.new()
-          project.rebuild_files()
+          detect_lang = project.detected_languages
+
+          langs = project.string_files()
+
+          puts "Found files for #{langs.length} languages".green
+
+          if options.rebuild
+            puts "Rebuilding...".blue
+            rebuilt = project.rebuild_files()
+            langs = langs.merge(rebuilt)
+            puts "Language \"#{project.default_language}\" is rebuilt from source into #{rebuilt[project.default_language].length} files".blue
+          end
+
+          puts "Writing #{langs.length} languages: #{langs.keys.join(', ')}".green
+
+          file = LanguageFile.new(File.join("./", "strings.json"), langs)
+          file.write
+
         end
       end
 
