@@ -19,7 +19,7 @@ module Applyrics
           cmd << Command.which("ibtool")
           cmd << "--export-strings-file " + Shellwords.escape("#{output_file}")
           cmd << Shellwords.escape("#{file}")
-          puts Command.execute(cmd)
+          Command.execute(cmd)
         end
       end
 

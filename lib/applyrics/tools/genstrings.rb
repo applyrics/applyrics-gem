@@ -15,7 +15,7 @@ module Applyrics
         cmd << "-o " + Shellwords.escape("#{output_folder}")
         cmd << Shellwords.join(files(folder))
 
-        puts Command.execute(cmd)
+        Command.execute(cmd)
       end
 
       def files(folder)
