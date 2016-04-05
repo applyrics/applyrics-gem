@@ -52,3 +52,4 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+examples/ios/Lyricsfile
