@@ -46,16 +46,6 @@ module Applyrics
         end
       end
 
-      command :sync do |c|
-        c.syntax = "applyrics sync"
-        c.description = "Syncs language from applyrics.io"
-        c.option '--project STRING', String, 'Path to iOS or Android project'
-        c.action do |args, options|
-          options.default :project => './'
-          puts "Not implemented yet... Sorry!"
-        end
-      end
-
       run!
     end
   end
