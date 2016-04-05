@@ -1,4 +1,5 @@
 require 'commander'
+require 'colored'
 require 'applyrics/setup'
 
 module Applyrics
@@ -17,9 +18,33 @@ module Applyrics
 
       command :init do |c|
         c.syntax = "applyrics init"
-        c.description = "Sets up the project"
+        c.description = "Setup the project for applyrics"
         c.action do |args, options|
-          puts "Not implemented yet... Sorry!"
+          project = Applyrics::Project.new()
+
+          if project.nil?
+            puts "Error"
+          else
+            case project.platform
+            when :ios
+              puts "Located ".green + "iOS".bold.green + " project".green
+            when :android
+              puts "Located ".green + "Android".bold.green + " project".green
+            end
+
+            langs = project.detected_languages
+            puts "Found #{langs.length} languages: #{langs.join(', ')}".green
+            puts ""
+
+            lang_files = project.language_files
+            langs.each do |lang|
+              if !lang_files.key?(lang)
+                puts "[#{lang}] No files detected for language!".yellow
+                next
+              end
+            end
+
+          end
         end
       end
 
