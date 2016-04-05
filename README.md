@@ -8,18 +8,21 @@ Manage your localization with confidence.
 
 ## Disclaimer
 
----
-This software should be considered ***pre-alpha*** and may thus be incomplete and contain bugs.
----
+**This software should be considered _pre-alpha_ and may thus change at any time, be incomplete or contain bugs.**
+
+## Why Applyrics?
+
+Managing translations for mobile projects can be a mess, especially if you are working with multiple platforms.
+iOS projects use key-value \*.strings files, Android use xmls, and variables are defined differently.
+
+*Applyrics* removes these obstacles and lets you manage languages using unified json files.
 
 ## Status
 
 | Feature   | iOS | Android |
 | --------- | --- | --------|
-| init      | :x: | :x:     |
-| rebuild   | :x: | :x:     |
+| extract   | :x: | :x:     |
 | apply     | :x: | :x:     |
-| sync      | :x: | :x:     |
 
 ## Installation
 
@@ -30,27 +33,39 @@ Install using ruby gems:
 
 ## Usage
 
-Initialize
+Usually you start out by extracting the strings from an existing project into a json file by running the following command in your projects directory:
+
+    applyrics extract
+
+
+After you've made changes to the translations you can apply those changes to the projects.
+Notice the addition of the *--rebuild* flag. This will ensure that we don't miss any new keys that might have been added.
+
+    applyrics apply --rebuild
+
+
+### Global flags
+
+| Flag            | Default | Description                  |
+| --------------- | ------- | ---------------------------- |
+| --verbose       | false   | Output more detailed logs    |
+| --rebuild       | false   | Rebuilds strings from source |
+| --lang CODE     | *All*   | Language to work with        |
+| --project PATH  | "./"    | Path to project              |
+
+
+### Actions
+
+Extract strings from project and create strings.json file
 (iOS: :x: Android: :x:)
 
-    applyrics init
-
-
-Rebuild language files
-(iOS: :x: Android: :x:)
-
-    applyrics rebuild
+    applyrics extract
 
 
 Apply a json language file
 (iOS: :x: Android: :x:)
 
     applyrics apply
-
-Sync languages
-(iOS: :x: Android: :x:)
-
-    applyrics sync
 
 
 ## License
