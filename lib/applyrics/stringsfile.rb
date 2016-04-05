@@ -13,7 +13,7 @@ module Applyrics
     def read
       @hash = {}
       parser = Parser.new(@hash)
-      File.open(@filename, 'rb:utf-16LE:utf-8') { |fd| parser.parse fd }
+      File.open(@filename, 'rb:bom|utf-16LE:utf-8') { |fd| parser.parse fd }
       self
     end
 
@@ -44,17 +44,9 @@ module Applyrics
 
       def parse(data)
         @hash.clear
-        found_bad_bytes = false
         data.each_line do |line|
           @line = line.chomp
-          if !found_bad_bytes
-            first_bytes = @line[0..1].bytes.to_a
-            if first_bytes.length == 2 && first_bytes[0] == 255
-              @line = @line[2,@line.length].force_encoding('UTF-8')
-              found_bad_bytes = true
-            end
-          end
-
+          
           case @line
           when @comment_regex
             # Not implemented
