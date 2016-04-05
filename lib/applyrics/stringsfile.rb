@@ -2,9 +2,9 @@
 module Applyrics
   class StringsFile
 
-    def initialize(filename, data=nil)
-      @filename = filename
-      @hash = data.nil? ? {} : data
+    def initialize(path, data=nil)
+      @path = path
+      @hash = data
       if data.nil?
         read
       end
@@ -13,7 +13,7 @@ module Applyrics
     def read
       @hash = {}
       parser = Parser.new(@hash)
-      File.open(@filename, 'rb:bom|utf-16LE:utf-8') { |fd| parser.parse fd }
+      File.open(@path, 'rb:bom|utf-16LE:utf-8') { |fd| parser.parse fd }
       self
     end
 
@@ -46,7 +46,7 @@ module Applyrics
         @hash.clear
         data.each_line do |line|
           @line = line.chomp
-          
+
           case @line
           when @comment_regex
             # Not implemented
