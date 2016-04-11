@@ -1,3 +1,4 @@
+# encoding: utf-8
 RSpec.describe Applyrics do
   describe "languagefile" do
     after do
