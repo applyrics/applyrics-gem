@@ -82,8 +82,22 @@ module Applyrics
         c.description = "Applies language from a .json file"
         c.option '--data STRING', String, 'Path to .json file (Default: strings.json)'
         c.action do |args, options|
-          options.default :project => './', :data => './lyrics.json'
-          puts "Not implemented yet... Sorry!"
+          options.default :project => './', :data => './strings.json'
+
+          language_file = LanguageFile.new(options.data)
+
+          puts "Loaded language file with #{language_file.languages.length} languages".green
+
+          project = Applyrics::Project.new()
+          detect_lang = project.detected_languages
+
+          #langs = project.string_files()
+
+          langs = language_file.to_hash
+
+          project.apply_languages(langs)
+
+
         end
       end
 
