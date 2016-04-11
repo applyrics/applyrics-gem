@@ -114,7 +114,6 @@ module Applyrics
     end
 
     def apply_languages(data)
-      puts data
       folder = self.platform_project_settings("SOURCE_ROOT")
       tmp_folder = "./tmp/"
 

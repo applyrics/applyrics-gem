@@ -1,3 +1,7 @@
+## Example files
+examples/ios/Lyricsfile
+examples/ios/tmp
+
 ## General ruby
 *.gem
 *.rbc
@@ -52,4 +56,3 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-examples/ios/Lyricsfile
