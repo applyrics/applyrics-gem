@@ -81,7 +81,7 @@ module Applyrics
           out[lang] = {}
         end
 
-        out[lang][File.basename(file)] = strings.hash
+        out[lang][File.basename(file)] = strings.to_hash
       end
 
       out
@@ -105,7 +105,7 @@ module Applyrics
 
       Dir[File.join(tmp_folder, "*.strings")].each do |file|
         strings = StringsFile.new(file)
-        langHash[File.basename(file)] = strings.hash
+        langHash[File.basename(file)] = strings.to_hash
       end
 
       FileUtils.remove_dir(tmp_folder)

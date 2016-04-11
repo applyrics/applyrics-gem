@@ -34,6 +34,10 @@ module Applyrics
       @hash = MultiJson.load(data)
     end
 
+    def to_hash
+      @hash
+    end
+
     def write()
       File.open(@path, 'w') { |file| file.write(MultiJson.dump(@hash, :pretty => true)) }
     end

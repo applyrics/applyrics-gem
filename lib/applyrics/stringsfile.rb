@@ -29,7 +29,7 @@ module Applyrics
       # Not implemented...
     end
 
-    def hash
+    def to_hash
       @hash
     end
 
