@@ -10,13 +10,6 @@ module Applyrics
       end
     end
 
-    def read
-      @hash = {}
-      parser = Parser.new(@hash)
-      File.open(@path, 'rb:bom|utf-16LE:utf-8') { |fd| parser.parse fd }
-      self
-    end
-
     def keys
       # Not implemented...
     end
@@ -33,7 +26,38 @@ module Applyrics
       @hash
     end
 
+    def read
+      @hash = {}
+      parser = Parser.new(@hash)
+      File.open(@path, 'rb:bom|utf-16LE:utf-8') { |fd| parser.parse fd }
+      self
+    end
+
+    def write
+      temp = Tempfile.new(File.basename(@path))
+      begin
+        gen = Generator.new(@hash)
+        gen.run { |line| temp.puts line }
+        FileUtils.mv(temp.path, @path)
+      ensure
+        temp.close
+      end
+    end
+
+    class Generator
+      def initialize(data)
+        @hash = data
+      end
+
+      def run
+        @hash.each do |key,value|
+          yield "\"#{key}\" = \"#{value}\"\n" if block_given?
+        end
+      end
+    end
+
     class Parser
+
       def initialize(hash)
         @hash = hash
         @property_regex = %r/\A(.*?)=(.*)\z/u
