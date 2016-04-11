@@ -72,6 +72,10 @@ module Applyrics
       @project.rebuild_files()
     end
 
+    def apply_languages(data)
+      @project.apply_languages(data)
+    end
+
     def platform
       @platform
     end

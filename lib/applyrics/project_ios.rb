@@ -112,5 +112,29 @@ module Applyrics
 
       out
     end
+
+    def apply_languages(data)
+      puts data
+      folder = self.platform_project_settings("SOURCE_ROOT")
+      tmp_folder = "./tmp/"
+
+      if !Dir.exist?(tmp_folder)
+        Dir.mkdir(tmp_folder, 0700)
+      end
+
+      data.each do |lang, files|
+        files.each do |file, data|
+
+          lang_folder = File.join(tmp_folder, (lang == default_language ? "Base" : lang) + ".lproj")
+
+          if !Dir.exist?(lang_folder)
+            Dir.mkdir(lang_folder, 0700)
+          end
+
+          strings = StringsFile.new(File.join(lang_folder, file), data)
+          strings.write
+        end
+      end
+    end
   end
 end
