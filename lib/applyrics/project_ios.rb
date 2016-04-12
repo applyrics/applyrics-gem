@@ -120,10 +120,11 @@ module Applyrics
       data.each do |lang, files|
         files.each do |file, data|
 
-          lang_folder = File.join(folder, (lang == default_language ? "Base" : lang) + ".lproj")
+          lang_folder = Dir[File.join(folder, "**", (lang == default_language ? "Base" : lang) + ".lproj")].first
 
           if !Dir.exist?(lang_folder)
             Dir.mkdir(lang_folder, 0700)
+            puts "Created #{lang_folder}".yellow
           end
 
           strings = StringsFile.new(File.join(lang_folder, file), data)

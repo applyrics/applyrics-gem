@@ -91,9 +91,9 @@ module Applyrics
           project = Applyrics::Project.new()
           detect_lang = project.detected_languages
 
-          #langs = project.string_files()
+          langs = project.string_files()
 
-          langs = language_file.to_hash
+          langs = langs.merge(language_file.to_hash)
 
           project.apply_languages(langs)
 
