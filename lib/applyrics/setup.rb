@@ -7,16 +7,12 @@ module Applyrics
     def run(config = {})
       platform = nil
       if is_ios?
-        puts "Found iOS project..."
         platform = :ios
       elsif is_android?
-        puts "Found Android project..."
         platform = :android
       elsif is_unity?
-        puts "Found Unity project..."
         platform = :unity
       else
-        puts "Didn't find any project!"
         return
       end
 
