@@ -1,0 +1,30 @@
+{
+  "sv": {
+    "LaunchScreen.strings": {
+    },
+    "Localizable.strings": {
+      "cancel": "Avbryt",
+      "message": "Meddelande",
+      "oldSchool": "oldSchool",
+      "title": "Titel"
+    },
+    "Main.strings": {
+      "C8n-M8-Sun.text": "Det här är ett test av lokalisering i Interface Builder",
+      "ntk-4x-Uds.normalTitle": "Tryck här!"
+    }
+  },
+  "en": {
+    "LaunchScreen.strings": {
+    },
+    "Localizable.strings": {
+      "cancel": "Cancel",
+      "message": "Message",
+      "oldSchool": "Old-School",
+      "title": "Title"
+    },
+    "Main.strings": {
+      "C8n-M8-Sun.text": "This is a test of localization in Interface Builder",
+      "ntk-4x-Uds.normalTitle": "Press me!"
+    }
+  }
+}

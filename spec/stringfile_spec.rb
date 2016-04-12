@@ -6,8 +6,12 @@ RSpec.describe Applyrics do
       end
     end
     context "on a ios project" do
-      it "parse a strings file" do
-        strings = Applyrics::StringsFile.new("./examples/files/Main.strings")
+      it "parse a utf-16 strings file" do
+        strings = Applyrics::StringsFile.new("./examples/files/ios-utf16.strings")
+        expect(strings.to_hash.size).to eq 4
+      end
+      it "parse a utf-8 strings file" do
+        strings = Applyrics::StringsFile.new("./examples/files/ios-utf8.strings")
         expect(strings.to_hash["ntk-4x-Uds.normalTitle"]).to eq "Press me"
       end
       it "writes string files" do
