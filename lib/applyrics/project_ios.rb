@@ -36,7 +36,7 @@ module Applyrics
     def language_files
       folder = self.platform_project_settings("SOURCE_ROOT") unless !folder.nil?
       out = {}
-      Dir[File.join(folder, "**","*.strings")].each do |file|
+      Dir[File.join(folder, "**", "*.lproj", "*.strings")].each do |file|
         lang = /(\w*).lproj/.match(file)[1]
         lang = (lang == "Base" ? default_language : lang)
 
@@ -76,6 +76,7 @@ module Applyrics
       Dir[File.join(folder, "**", "*.lproj", "*.strings")].each do |file|
         strings = StringsFile.new(file)
         lang = /(\w*).lproj/.match(file)[1]
+        lang = (lang == "Base" ? default_language : lang)
 
         if !out.key?(lang)
           out[lang] = {}
