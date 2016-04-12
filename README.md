@@ -19,10 +19,10 @@ iOS projects use key-value \*.strings files, Android use xmls, and variables are
 
 ## Status
 
-| Feature   | iOS | Android |
-| --------- | --- | --------|
-| extract   | :x: | :x:     |
-| apply     | :x: | :x:     |
+| Feature   | iOS                | Android |
+| --------- | ------------------ | --------|
+| extract   | :white_check_mark: | :x:     |
+| apply     | :white_check_mark: | :x:     |
 
 ## Installation
 
@@ -57,13 +57,13 @@ Notice the addition of the *--rebuild* flag. This will ensure that we don't miss
 ### Actions
 
 Extract strings from project and create strings.json file
-(iOS: :x: Android: :x:)
+(iOS: :white_check_mark: Android: :x:)
 
     applyrics extract
 
 
 Apply a json language file
-(iOS: :x: Android: :x:)
+(iOS: :white_check_mark: Android: :x:)
 
     applyrics apply
 
