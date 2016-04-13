@@ -54,7 +54,7 @@ module Applyrics
         c.syntax = "applyrics extract"
         c.description = "Pull strings from the project into a strings.json file"
         c.action do |args, options|
-          
+
           project = Applyrics::Project.new()
           detect_lang = project.detected_languages
 
