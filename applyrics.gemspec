@@ -16,9 +16,8 @@ Gem::Specification.new do |s|
   s.homepage      = 'https://github.com/applyrics/applyrics-gem'
   s.license       = 'MIT'
   s.metadata      = { "issue_tracker" => "https://github.com/applyrics/applyrics-gem/issues" }
-  s.required_ruby_version = '>= 1.9'
 
-  s.post_install_message = "Thank you for using applyrics! Please keep in mind that this software is in early development, things might break."
+  s.required_ruby_version = '>= 2.0.0'
 
   s.add_dependency 'commander', '~> 4.4'
   s.add_dependency 'colored', '~> 1.2'
