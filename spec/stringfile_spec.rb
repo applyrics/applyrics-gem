@@ -1,3 +1,5 @@
+require File.expand_path('../spec_helper', __FILE__)
+
 RSpec.describe Applyrics do
   describe 'stringfile' do
     after do

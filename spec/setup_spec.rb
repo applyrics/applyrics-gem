@@ -1,3 +1,5 @@
+require File.expand_path('../spec_helper', __FILE__)
+
 RSpec.describe Applyrics do
   describe 'setup' do
     before do
@@ -19,11 +21,6 @@ RSpec.describe Applyrics do
       it 'fails to detect unity project' do
         setup = Applyrics::Setup.new
         expect(setup.is_unity?).to be false
-      end
-      it 'creates a Lyricsfile' do
-        Applyrics::Setup.new.run()
-        expect(Applyrics::Lyricsfile.exist?).to be true
-        File.delete('./Lyricsfile')
       end
     end
   end
